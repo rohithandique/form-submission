@@ -50,7 +50,7 @@ export default function CTA() {
             shrink={{ lg: 0 }}
           >
             <Link
-              w={["full", , "auto"]}
+              w={["full", "auto"]}
               display="inline-flex"
               alignItems="center"
               justifyContent="center"
@@ -69,7 +69,7 @@ export default function CTA() {
               Get started
             </Link>
             <Link
-              w={["full", , "auto"]}
+              w={["full", "auto"]}
               display="inline-flex"
               alignItems="center"
               justifyContent="center"

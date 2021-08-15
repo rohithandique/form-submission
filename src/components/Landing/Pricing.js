@@ -51,13 +51,13 @@ export default function App() {
       justifyContent="center"
     >
       <Box py="64px" px="10" bg={useColorModeValue("gray.100", "gray.700")} rounded={["none", "lg"]}>
-        <Box w="full" px={[10, , 4]} mx="auto" textAlign="center">
+        <Box w="full" px={[10, 4]} mx="auto" textAlign="center">
           <Text mb={2} fontSize="5xl" fontWeight="bold" lineHeight="tight">
             Plans & Pricing
           </Text>
           <chakra.p
             mb={6}
-            fontSize={["lg", , "xl"]}
+            fontSize={["lg", "xl"]}
             color={useColorModeValue("gray.600", "gray.400")}
           >
             5 minute installation · Try Team plan features for 14 days · No
@@ -129,7 +129,7 @@ export default function App() {
                   </chakra.span>
                 </Text>
                 <Link
-                  w={["full", , "auto"]}
+                  w={["full", "auto"]}
                   display="inline-flex"
                   alignItems="center"
                   justifyContent="center"
@@ -194,7 +194,7 @@ export default function App() {
                   </chakra.span>
                 </Text>
                 <Link
-                  w={["full", , "auto"]}
+                  w={["full", "auto"]}
                   display="inline-flex"
                   alignItems="center"
                   justifyContent="center"
@@ -263,7 +263,7 @@ export default function App() {
                   </chakra.span>
                 </Text>
                 <Link
-                  w={["full", , "auto"]}
+                  w={["full", "auto"]}
                   display="inline-flex"
                   alignItems="center"
                   justifyContent="center"
@@ -301,14 +301,14 @@ export default function App() {
         </Box>
         <Flex
               mb="100px"
-              mx={[10, , 24]}
+              mx={[10, 24]}
               p={10}
               mt={5}
               rounded="md"
               shadow={["none", "md"]}
               bg={useColorModeValue("#F9FAFB", "gray.800")}
               align="center"
-              direction={["column", , "row"]}
+              direction={["column", "row"]}
             >
               <Stack flex="0.8" pr={10}>
                 <Badge
@@ -331,13 +331,13 @@ export default function App() {
                 </Text>
               </Stack>
               <Link
-                w={["full", , "auto"]}
+                w={["full", "auto"]}
                 display="inline-flex"
                 alignItems="center"
                 justifyContent="center"
                 px={5}
                 py={3}
-                mt={[5, , 0]}
+                mt={[5, 0]}
                 border="solid transparent"
                 fontWeight="semibold"
                 rounded="md"
