@@ -18,6 +18,6 @@ export default function LogOut() {
     }
 
     return (
-        <Button mt="8" size="lg" onClick={handleLogout}>Log Out</Button>
+        <Button size="lg" onClick={handleLogout}>Log Out</Button>
     )
 }
