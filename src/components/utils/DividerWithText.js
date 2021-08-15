@@ -7,7 +7,7 @@ export default function DividerWithText(props) {
       <Box flex="1">
         <Divider borderColor="currentcolor" />
       </Box>
-      <Text as="span" px="3" color={useColorModeValue('gray.600', 'gray.400')} fontWeight="medium">
+      <Text as="span" px="3" color={useColorModeValue('gray.800', 'gray.400')} fontWeight="medium">
         {children}
       </Text>
       <Box flex="1">

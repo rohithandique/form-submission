@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 import SignUp from "./SignUp";
+import LogOut from "./LogOut"
 import { 
-    Button, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, 
+    Button, ButtonGroup, Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, 
     ModalBody, ModalCloseButton, useDisclosure, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+
 export default function AuthModal(props) {
     const { login, value } = props;
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -20,12 +22,16 @@ export default function AuthModal(props) {
         {/*conditionally rendering the buttons based on current users' value.
         need to make it less complex*/}
         {!login && value!==null ? <></> : (
-            login && value!==null ? 
-            <Link as={RouterLink} to="/dashboard" style={{ textDecoration: 'none' }}>
-                <Button size="lg" type="button">
-                    Dashboard
-                </Button>
-            </Link> : 
+            login && value!==null ?
+            <ButtonGroup>
+                <Link as={RouterLink} to="/dashboard" style={{ textDecoration: 'none' }}>
+                    <Button size="lg" type="button">
+                        Dashboard
+                    </Button>
+                </Link>
+                <LogOut />
+            </ButtonGroup> 
+             : 
             (login ? <Button size="lg" onClick={onOpen}>Login</Button> : 
             <Button size="lg" onClick={onOpen}>Sign Up</Button>)
         )}
