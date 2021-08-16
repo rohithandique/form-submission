@@ -33,10 +33,12 @@ export default function AuthModal(props) {
             </ButtonGroup> 
              : 
             (login ? <Button size="lg" onClick={onOpen}>Login</Button> : 
-            <Button size="lg" onClick={onOpen}>Sign Up</Button>)
+            <Button size="lg" bg="blue.300" _hover={{
+                background: "blue.400",
+              }} onClick={onOpen}>Sign Up</Button>)
         )}
 
-        <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <Modal isOpen={isOpen} onClose={onClose} isCentered motionPreset="scale">
             <ModalOverlay />
             <ModalContent>
                 <ModalHeader>

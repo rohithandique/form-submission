@@ -53,8 +53,8 @@ export default function SignUp() {
         } catch(error) {
             console.log(error);
             setEmailError('Failed to create an account');
+            setLoading(false);
         }
-        
     }
  
     return (
