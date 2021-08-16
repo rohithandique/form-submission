@@ -1,123 +1,126 @@
-import React from "react";
-import { chakra, Box, useColorModeValue, Icon, Image, Button, Input, InputGroup, InputRightElement } from "@chakra-ui/react";
+import {
+  Container,
+  Stack,
+  Flex,
+  Box,
+  Heading,
+  Text,
+  Button,
+  Image,
+  IconButton,
+  createIcon,
+  useColorModeValue,
+  SimpleGrid, GridItem, VisuallyHidden, Input, 
+} from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons'
+import { useAuth } from '../../contexts/AuthContext';
 
-export default function Hero(){
-  const bg = useColorModeValue("#F9FAFB", "gray.800");
+export default function Hero() {
+
+  const { currentUser } = useAuth();
+
   return (
-    <Box pos="relative" overflow="hidden" bg={bg}>
-      <Box maxW="7xl" mx="auto">
-        <Box
-          pos="relative"
-          pb={{ base: 8, sm: 16, md: 20, lg: 28, xl: 32 }}
-          maxW={{ lg: "2xl" }}
-          w={{ lg: "full" }}
-          zIndex={1}
-          bg={bg}
-          border="solid 1px transparent"
-        >
-          <Icon
-            display={{ base: "none", lg: "block" }}
-            position="absolute"
-            right={0}
-            top={0}
-            bottom={0}
-            h="full"
-            w={48}
-            color={bg}
-            transform="translateX(50%)"
-            fill="currentColor"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
+    <Box bg={useColorModeValue('gray.50', 'gray.800')}>
+    <Container maxW={'7xl'} >
+      <Stack
+        align={'center'}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: 20, md: 28 }}
+        direction={{ base: 'column', md: 'row' }}>
+        <Stack flex={1} spacing={{ base: 5, md: 10 }}>
+          <Heading
+            lineHeight={1.1}
+            fontWeight={600}
+            fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
+            <Text
+              as={'span'}
+              position={'relative'}
+              _after={{
+                content: "''",
+                width: 'full',
+                height: '30%',
+                position: 'absolute',
+                bottom: 1,
+                left: 0,
+                bg: 'gray.400',
+                zIndex: -1,
+              }}>
+              Write once,
+            </Text>
+            <br />
+            <Text as={'span'} color={'gray.400'}>
+              use everywhere!
+            </Text>
+          </Heading>
+          <Text color={'gray.500'}>
+            Snippy is a rich coding snippets app that lets you create your own
+            code snippets, categorize them, and even sync them in the cloud so
+            you can use them anywhere. All that is free!
+          </Text>
+          {!currentUser ? 
+          <SimpleGrid as="form" w={{ base: "full", md: 7 / 12 }} columns={{ base: 1, lg: 6 }}
+          spacing={3} pt={1} mx="auto" mb={8}
           >
-            <polygon points="50,0 100,0 50,100 0,100" />
-          </Icon>
-          <Box
-            mx="auto"
-            maxW={{ base: "7xl" }}
-            px={{ base: 4, sm: 6, lg: 8 }}
-            mt={{ base: 10, sm: 12, md: 16, lg: 20, xl: 28 }}
-          >
-            <Box
-              w="full"
-              textAlign={{ sm: "center", lg: "left" }}
-              justifyContent="center"
-              alignItems="center"
+            <GridItem as="label" colSpan={{ base: "auto", lg: 4 }}>
+              <VisuallyHidden>Your Email</VisuallyHidden>
+              <Input mt={0} size="lg" type="email" placeholder="Enter your email..." required="true" />
+            </GridItem>
+            <Button as={GridItem} w="max" bg="blue.300" _hover={{ bg: "blue.400" }}
+              variant="solid" colSpan={{ base: "auto", lg: 2 }} size="lg" type="submit"
+              cursor="pointer" rightIcon={<ArrowForwardIcon />}
             >
-              <chakra.h1
-                fontSize={{ base: "4xl", md: "6xl" }}
-                fontWeight="bold"
-                lineHeight="none"
-                letterSpacing={{ base: "normal", md: "tight" }}
-                color={useColorModeValue("gray.900",'gray.100')}
-              >
-                <chakra.h1 display={{ base: "block", xl: "inline" }}>
-                  Data to enrich your{" "}
-                </chakra.h1>
-                <chakra.h1
-                  display={{ base: "block", xl: "inline" }}
-                  color={useColorModeValue("brand.600", "brand.400")}
-                >
-                  online business
-                </chakra.h1>
-            </chakra.h1>
-            <chakra.p
-                mt={{ base: 3, sm: 5, md: 5 }}
-                fontSize={{ sm: "lg", md: "xl" }}
-                maxW={{ sm: "xl" }}
-                mx={{ sm: "auto", lg: 0 }}
-                color="gray.500"
-              >
-                Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-                lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-                fugiat aliqua.
-            </chakra.p>
-            <InputGroup mt="4" size="lg" w="full" display={{ base: "none", lg: "flex" }}>
-                <Input
-                size="lg"
-                color="brand.900"
-                type="email"
-                placeholder="Enter your email..."
-                required="true"
-                />
-                <InputRightElement w="auto">
-                <Button
-                    as="a"
-                    colorScheme="gray"
-                    display="inline-flex"
-                    alignItems="center"
-                    justifyContent="center"
-                    w={{ base: "full", sm: "auto" }}
-                    mb={{ base: 2, sm: 0 }}
-                    size="lg"
-                    cursor="pointer"
-                >
-                    Get Started
-                </Button>
-                </InputRightElement>
-            </InputGroup>
-            </Box>
+              Get Started
+            </Button>
+          </SimpleGrid> : <Text>Thank you for joining us!</Text>  
+        }
+          
+      </Stack>
+        <Flex
+          flex={1}
+          justify={'center'}
+          align={'center'}
+          position={'relative'}
+          w={'full'}>
+          <Box
+            position={'relative'}
+            height={'300px'}
+            rounded={'2xl'}
+            boxShadow={'2xl'}
+            width={'full'}
+            overflow={'hidden'}>
+            <IconButton
+              aria-label={'Play Button'}
+              variant={'ghost'}
+              _hover={{ bg: 'transparent' }}
+              icon={<PlayIcon w={12} h={12} />}
+              size={'lg'}
+              color={'white'}
+              position={'absolute'}
+              left={'50%'}
+              top={'50%'}
+              transform={'translateX(-50%) translateY(-50%)'}
+            />
+            <Image
+              alt={'Hero Image'}
+              fit={'cover'}
+              align={'center'}
+              w={'100%'}
+              h={'100%'}
+              src={
+                'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=800&q=80'
+              }
+            />
           </Box>
-        </Box>
-      </Box>
-      <Box
-        position={{ lg: "absolute" }}
-        top={{ lg: 0 }}
-        bottom={{ lg: 0 }}
-        right={{ lg: 0 }}
-        w={{ lg: "50%" }}
-        border='solid 1px transparent'
-      >
-        <Image
-          h={[56, 72, 96, "full"]}
-          w="full"
-          fit="cover"
-          src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2850&q=80"
-          alt=""
-          loading="lazy"
-        />
-      </Box>
+        </Flex>
+      </Stack>
+    </Container>
     </Box>
   );
-};
+}
 
+const PlayIcon = createIcon({
+  displayName: 'PlayIcon',
+  viewBox: '0 0 58 58',
+  d:
+    'M28.9999 0.562988C13.3196 0.562988 0.562378 13.3202 0.562378 29.0005C0.562378 44.6808 13.3196 57.438 28.9999 57.438C44.6801 57.438 57.4374 44.6808 57.4374 29.0005C57.4374 13.3202 44.6801 0.562988 28.9999 0.562988ZM39.2223 30.272L23.5749 39.7247C23.3506 39.8591 23.0946 39.9314 22.8332 39.9342C22.5717 39.9369 22.3142 39.8701 22.0871 39.7406C21.86 39.611 21.6715 39.4234 21.5408 39.1969C21.4102 38.9705 21.3421 38.7133 21.3436 38.4519V19.5491C21.3421 19.2877 21.4102 19.0305 21.5408 18.8041C21.6715 18.5776 21.86 18.3899 22.0871 18.2604C22.3142 18.1308 22.5717 18.064 22.8332 18.0668C23.0946 18.0696 23.3506 18.1419 23.5749 18.2763L39.2223 27.729C39.4404 27.8619 39.6207 28.0486 39.7458 28.2713C39.8709 28.494 39.9366 28.7451 39.9366 29.0005C39.9366 29.2559 39.8709 29.507 39.7458 29.7297C39.6207 29.9523 39.4404 30.1391 39.2223 30.272Z',
+});

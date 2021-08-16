@@ -14,6 +14,7 @@ export default function Dashboard2() {
     const mobileNav = useDisclosure();
     const { currentUser } = useAuth();
     const [scrolled, setScrolled] = useState(false);
+    
     useEffect(() => {
         window.onscroll = function() {
           if (window.scrollY > 50) {
@@ -23,7 +24,6 @@ export default function Dashboard2() {
           }
         };
     }, []);
-    console.log(currentUser)
 
     return (
         
@@ -44,8 +44,8 @@ export default function Dashboard2() {
                 display={{ base: "none", md: "inline-flex" }}
                 >
                     <ToggleTheme />
-                    <AuthModal login={true} value={currentUser}/>
                     <AuthModal login={false} value={currentUser}/>    
+                    <AuthModal login={true} value={currentUser}/>
                 </HStack>
                 <Box display={{ base: "inline-flex", md: "none" }}>
                 <IconButton

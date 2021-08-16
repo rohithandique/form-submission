@@ -5,10 +5,13 @@ import {
   Flex,
   useColorModeValue,
   Stack,
-  Link,
+  Button
 } from "@chakra-ui/react";
+import AuthModal from "../auth/AuthModal";
+import { useAuth } from '../../contexts/AuthContext'
 
 export default function CTA() {
+  const { currentUser } = useAuth();
   return (
     <Flex
       bg={useColorModeValue("#F9FAFB", "gray.800")}
@@ -49,45 +52,10 @@ export default function CTA() {
             mt={{ base: 8, lg: 0 }}
             shrink={{ lg: 0 }}
           >
-            <Link
-              w={["full", "auto"]}
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              px={5}
-              py={3}
-              border="solid transparent"
-              fontWeight="bold"
-              rounded="md"
-              shadow="md"
-              color={useColorModeValue("white")}
-              bg={useColorModeValue("gray.600", "gray.700")}
-              _hover={{
-                bg: useColorModeValue("gray.700", "gray.800"),
-              }}
-            >
-              Get started
-            </Link>
-            <Link
-              w={["full", "auto"]}
-              display="inline-flex"
-              alignItems="center"
-              justifyContent="center"
-              px={5}
-              py={3}
-              border="solid transparent"
-              fontWeight="bold"
-              rounded="md"
-              shadow="md"
-              color="gray.600"
-              bg="white"
-              _hover={{
-                bg: "gray.300",
-              }}
-            >
-              Learn More
-            </Link>
+            <AuthModal login={false} value={currentUser} />
+            <Button size="lg" bg={useColorModeValue("gray.500", "gray.400")}>Learn More</Button>
           </Stack>
+          
         </Box>
       </Box>
     </Flex>
