@@ -3,7 +3,7 @@ Original Repo: https://github.com/bjcarlson42/chakra-left-responsive-navbar
 
 */
 
-import React, { useState } from 'react'
+import React from 'react'
 import {
     Flex,
     Text,
@@ -22,10 +22,12 @@ import {
 } from 'react-icons/fi'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { useAuth } from '../contexts/AuthContext';
+import { Link as RouterLink, useRouteMatch } from 'react-router-dom';
 
-export default function Sidebar() {
-    const [navSize, changeNavSize] = useState("large")
+export default function Sidebar(props) {
+    const { navSize, changeNavSize } = props;
     const { currentUser } = useAuth();
+    const { url } = useRouteMatch();
 
     return (
         <Flex
@@ -65,11 +67,12 @@ export default function Sidebar() {
                             changeNavSize("small")
                         }}
                     /> : <></>}
-                    <Button _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                    
+                    <Button as={RouterLink} to={`${url}`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
                         <Icon as={FiHome} fontSize="xl" />
                         <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Dashboard</Text>
                     </Button >
-                    <Button _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                    <Button as={RouterLink} to={`${url}/stats`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
                         <Icon as={FiCalendar} fontSize="xl" />
                         <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Calendar</Text>
                     </Button>
@@ -98,7 +101,7 @@ export default function Sidebar() {
                     <Button h="7.5vh" justifyContent="center" align="center" _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}}>
                         <Avatar size="sm" src="avatar-1.jpg" cursor="pointer"/>
                         <Text ml="2" display={navSize === "small" ? "none" : "flex"}>
-                            {currentUser.displayName ?currentUser.displayName : currentUser.uid.substring(0,9)}
+                            {currentUser.displayName ?currentUser.displayName : "username"}
                         </Text>
                     </Button>
                 </Flex>
