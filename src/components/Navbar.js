@@ -14,6 +14,7 @@ export default function Dashboard2() {
     const mobileNav = useDisclosure();
     const { currentUser } = useAuth();
     const [scrolled, setScrolled] = useState(false);
+    console.log(currentUser)
     
     useEffect(() => {
         window.onscroll = function() {

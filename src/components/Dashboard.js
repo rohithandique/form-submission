@@ -24,10 +24,7 @@ export default function Dashboard() {
             <Center w={navSize==="large"? "calc(100vw - 250px)" : "calc(100vw - 60px)"} 
             bg="gray.400">Hello World</Center>
           </Route>
-          <Route path={`${path}/stats`}>
-            <Center w={navSize==="large"? "calc(100vw - 250px)" : "calc(100vw - 60px)"} 
-            bg="gray.400">Rohit Handique</Center>
-          </Route>
+          
         </Switch>
         
         
