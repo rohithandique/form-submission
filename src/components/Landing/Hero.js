@@ -63,7 +63,7 @@ export default function Hero() {
           >
             <GridItem as="label" colSpan={{ base: "auto", lg: 4 }}>
               <VisuallyHidden>Your Email</VisuallyHidden>
-              <Input mt={0} size="lg" type="email" placeholder="Enter your email..." required="true" />
+              <Input mt={0} size="lg" type="email" placeholder="Enter your email..." required={true} />
             </GridItem>
             <Button as={GridItem} w="max" bg="blue.300" _hover={{ bg: "blue.400" }}
               variant="solid" colSpan={{ base: "auto", lg: 2 }} size="lg" type="submit"

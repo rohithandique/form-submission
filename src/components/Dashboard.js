@@ -5,6 +5,8 @@ import Sidebar from './Sidebar'
 import Username from './utils/Username'
 import { useAuth } from '../contexts/AuthContext';
 import { Switch, Route, useRouteMatch } from "react-router-dom";
+import NewForm from './NewForm'
+import Submissions from './Submissions'
 
 export default function Dashboard() {
 
@@ -24,10 +26,13 @@ export default function Dashboard() {
             <Center w={navSize==="large"? "calc(100vw - 250px)" : "calc(100vw - 60px)"} 
             bg="gray.400">Hello World</Center>
           </Route>
-          
+          <Route path={`${path}/new-form`}>
+            <NewForm navSize={navSize}/>
+          </Route>
+          <Route path={`${path}/submissions`}>
+            <Submissions />
+          </Route>
         </Switch>
-        
-        
       </Flex>
     </Box>
   )
