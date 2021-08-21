@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "fir-auth-183aa"
+    "default": "fir-auth-183aa",
+    "secondary" : "form-submission-function"
   }
 }

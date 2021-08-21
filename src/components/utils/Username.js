@@ -33,7 +33,6 @@ export default function Username() {
             setUsernameError("some username error")
         }) 
         setLoading(false);
-
     }
 
     return (

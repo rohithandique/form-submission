@@ -5,22 +5,14 @@ Original Repo: https://github.com/bjcarlson42/chakra-left-responsive-navbar
 
 import React from 'react'
 import {
-    Flex,
-    Text,
-    IconButton,
-    Divider,
-    Avatar,
-    useColorModeValue,
-    Button,
-    Icon
+    Flex, Text, IconButton, Divider, Avatar, useColorModeValue, Button, Icon
 } from '@chakra-ui/react'
 import {
-    FiHome,
-    FiCalendar,
-    FiUser,
-    FiSettings
+    FiHome, FiUser, FiSettings
 } from 'react-icons/fi'
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+
+import { BsCreditCard } from 'react-icons/bs'
+import { HamburgerIcon, CloseIcon, AddIcon} from '@chakra-ui/icons'
 import { useAuth } from '../contexts/AuthContext';
 import { Link as RouterLink, useRouteMatch } from 'react-router-dom';
 
@@ -68,32 +60,28 @@ export default function Sidebar(props) {
                         }}
                     /> : <></>}
                     
-                    <Button as={RouterLink} to={`${url}`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                    <Button bg="gray.400" as={RouterLink} to={`${url}/submissions`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
                         <Icon as={FiHome} fontSize="xl" />
-                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Dashboard</Text>
-                    </Button >
-                    <Button as={RouterLink} to={`${url}/stats`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
-                        <Icon as={FiCalendar} fontSize="xl" />
-                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Calendar</Text>
+                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Submissions</Text>
                     </Button>
-                    <Button  _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                    <Button bg="gray.400" as={RouterLink} to={`${url}/new-form`} _hover={{ textDecor: 'none', bg: "#AEC8CA" }}
+                    _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                        <Icon as={AddIcon} fontSize="xl" />
+                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>New Form</Text>
+                    </Button>
+                    <Button bg="gray.400" as={RouterLink} to={`${url}/integrations`}  _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
                         <Icon as={FiUser} fontSize="xl" />
-                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Clients</Text>
+                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Integrations</Text>
                     </Button>
-                    <Button  _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                    <Button bg="gray.400" _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
+                        <Icon as={BsCreditCard} fontSize="xl" />
+                        <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Billings</Text>
+                    </Button>
+                    <Button bg="gray.400" _hover={{ textDecor: 'none', bg: "#AEC8CA" }} _focus={{bg:"gray.400"}} mt="5" justifyContent="flex-start">
                         <Icon as={FiSettings} fontSize="xl" />
                         <Text ml={5} display={navSize === "small" ? "none" : "flex"}>Settings</Text>
                     </Button>
                 </Flex>
-                {/*
-                <NavItem navSize={navSize} icon={FiHome} title="Dashboard" description="This is the description for the dashboard." />
-                <NavItem navSize={navSize} icon={FiCalendar} title="Calendar" />
-                <NavItem navSize={navSize} icon={FiUser} title="Clients" />
-                <NavItem navSize={navSize} icon={IoPawOutline} title="Animals" />
-                <NavItem navSize={navSize} icon={FiDollarSign} title="Stocks" />
-                <NavItem navSize={navSize} icon={FiBriefcase} title="Reports" />
-                <NavItem navSize={navSize} icon={FiSettings} title="Settings" />
-                */}
                 </Flex>
                 
                 <Flex mt={4} flexDir="column" w="100%">
