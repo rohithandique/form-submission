@@ -1,39 +1,38 @@
-import React, { useState, useEffect, useCallback} from 'react'
+import React, { useEffect, useCallback} from 'react'
 import { useForm } from '../../contexts/FormContext'
 import { secondaryDb as db} from '../../firebase';
 import { useAuth } from '../../contexts/AuthContext';
+import SubmissionsTable from './SubmissionsTable';
 
 export default function SubmissionsDash() {
 
-    const { currentForm } = useForm();
-    console.log(currentForm)
-    const [formData, setFormData] = useState({});
+    const { currentForm, setFormArray } = useForm();
+    //const [formData, setFormData] = useState({});
     const { currentUser } = useAuth()
     
-    const getForm = useCallback(async ()=> {
-        const formArray = [];
+    const getForm = useCallback(()=> {
+        let formDataArray = []
         if(currentForm!=="") {
-            const collectionRef = db.collection(currentUser.email).doc("_formData").collection(currentForm);
-            const collection = await collectionRef.get()
-            collection.forEach(doc => {
-                formArray.push(doc.data())
-                setFormData(doc.data())
-                console.log(doc.data())
-            })
+            db.collection(currentUser.email).doc("_formData").collection(currentForm)
+            .onSnapshot(
+                querySnapshot=>{
+                    querySnapshot.docChanges().forEach(change => {
+                        formDataArray.push(change.doc.data())
+                        console.log(formDataArray)
+                    });
+                    setFormArray(formDataArray)
+                })
         }
-        console.log(formArray)
         
-    }, [currentForm, currentUser.email])
+    }, [currentForm, currentUser.email, setFormArray])
     //getForm()
-    console.log(formData)
     useEffect(() => {
         getForm()
-
     }, [getForm])
-
+    //console.log(formData)
     return (
         <div>
-        {currentForm}
+            <SubmissionsTable/>
         </div>
     )
 }

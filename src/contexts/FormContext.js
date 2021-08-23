@@ -10,12 +10,15 @@ export function FormProvider({children}) {
 
     const [currentForm, setCurrentForm] = useState("");
     const [formList, setFormList] = useState([]);
+    const [formArray, setFormArray] = useState([]);
 
     const value = {
         currentForm,
         setCurrentForm,
         formList,
-        setFormList
+        setFormList,
+        formArray,
+        setFormArray
     }
 
     return (
