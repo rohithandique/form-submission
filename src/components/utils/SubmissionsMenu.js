@@ -15,9 +15,11 @@ export default function SubmissionsMenu(props) {
                 Select Form
             </MenuButton>
             <MenuList>
-                {formList.map((item, index)=>{
-                    return <MenuItem key={index} onClick={()=>setCurrentForm(item)}>
-                        <Link>{item}</Link>
+                {formList.sort().map((item, index)=>{
+                    return <MenuItem key={index} onClick={()=>{
+                        setCurrentForm(item)
+                    }}>
+                        <Link _hover={{textDecoration: "none"}}>{item}</Link>
                     </MenuItem>})
                 }
             </MenuList>
