@@ -46,7 +46,7 @@ function ReactTable({ columns, data }) {
   
     // Render the UI for your table
     return (
-      <Table {...getTableProps()}>
+      <Table {...getTableProps()} mt="8">
         <Thead>
           {headerGroups.map(headerGroup => (
             <Tr {...headerGroup.getHeaderGroupProps()}>
