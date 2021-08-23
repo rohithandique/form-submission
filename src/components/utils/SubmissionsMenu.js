@@ -7,12 +7,12 @@ import { useForm } from '../../contexts/FormContext';
 
 export default function SubmissionsMenu(props) {
 
-    const { setCurrentForm } = useForm();
+    const { currentForm, setCurrentForm } = useForm();
     const { formList } = props;
     return (
         <Menu>
             <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-                Select Form
+                {currentForm===""? "Select Form" : currentForm}
             </MenuButton>
             <MenuList>
                 {formList.sort().map((item, index)=>{
