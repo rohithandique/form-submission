@@ -10,20 +10,23 @@ export default function SubmissionsDash() {
     
     const hashids = new Hashids('formsubmission', 10)
     const { currentForm, setFormArray } = useForm();
-    //const [formData, setFormData] = useState({});
+    //const [formData, setFormData] = useState();
     const { currentUser } = useAuth()
-    
-    const getForm = useCallback(()=> {
-        let formDataArray = []
-        if(currentForm!=="") {
-            db.collection(currentUser.email).doc("_formData").collection(currentForm)
-            .onSnapshot(
-                querySnapshot=>{
-                    querySnapshot.docChanges().forEach(change => {
+    /*
+    querySnapshot.docChanges().forEach(change => {
                         formDataArray.push(change.doc.data())
                         console.log(formDataArray)
                     });
                     setFormArray(formDataArray)
+    */ 
+    const getForm = useCallback(()=> {
+        //let formDataArray = []
+        if(currentForm!=="") {
+            db.collection(currentUser.email).doc("_formData").collection(currentForm)
+            .onSnapshot(
+                querySnapshot=>{
+                    const data = querySnapshot.docs.map(doc=>doc.data())
+                    setFormArray(data)
                 })
         }
         
@@ -36,12 +39,8 @@ export default function SubmissionsDash() {
     let encoded = "";
     if(currentForm!=="") {
         const formCode = currentUser.email.concat(" ").concat(currentForm);
-        
         const hex = Buffer.from(formCode, 'utf8').toString('hex');
-        console.log(hex);
-
         encoded = hashids.encodeHex(hex);
-        console.log(encoded);
     }
 
     return (
