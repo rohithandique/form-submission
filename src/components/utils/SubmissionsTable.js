@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useEffect } from 'react'
 import { useForm } from '../../contexts/FormContext'
 import { useTable } from 'react-table'
 import {
@@ -9,6 +9,10 @@ import {
 export default function SubmissionsTable() {
 
     const { formArray } = useForm()
+    useEffect(() => {
+      console.log(formArray)
+    }, [formArray])
+    
     //console.log(formArray)
     let keys = []
     let columns = []
